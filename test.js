@@ -2,15 +2,15 @@
 
 const pixelChange = require('../index');
 
-const {readFileSync} = require('fs');
+const { readFileSync } = require('fs');
 
-const {resolve} = require('path');
+const { resolve } = require('path');
 
 const assert = require('assert');
 
-const {deepStrictEqual, throws} = assert;
+const { deepStrictEqual, throws } = assert;
 
-const {promisify} = require('util');
+const { promisify } = require('util');
 
 const sleep = promisify(setTimeout);
 
@@ -63,7 +63,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                         engine = pixelChange();
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -77,7 +77,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                         engine = pixelChange({});
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -88,10 +88,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 0, height: 1, depth: 1});
+                        engine = pixelChange({ width: 0, height: 1, depth: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -102,10 +102,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: '1', height: 1, depth: 1});
+                        engine = pixelChange({ width: '1', height: 1, depth: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -116,10 +116,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1});
+                        engine = pixelChange({ width: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -130,10 +130,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 0, depth: 1});
+                        engine = pixelChange({ width: 1, height: 0, depth: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -144,10 +144,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: '1', depth: 1});
+                        engine = pixelChange({ width: 1, height: '1', depth: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -158,10 +158,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 1});
+                        engine = pixelChange({ width: 1, height: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -172,10 +172,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 1, depth: 0});
+                        engine = pixelChange({ width: 1, height: 1, depth: 0 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -186,10 +186,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 1, depth: '1'});
+                        engine = pixelChange({ width: 1, height: 1, depth: '1' });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -202,10 +202,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 1, depth: 1, draw: 1});
+                        engine = pixelChange({ width: 1, height: 1, depth: 1, draw: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -216,10 +216,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 1, depth: 1, draw: 'true'});
+                        engine = pixelChange({ width: 1, height: 1, depth: 1, draw: 'true' });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
@@ -230,17 +230,17 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 throws(
                     () => {
-                        engine = pixelChange({width: 1, height: 1, depth: 1, response: 1});
+                        engine = pixelChange({ width: 1, height: 1, depth: 1, response: 1 });
                     },
                     {
-                        message: errMsg
+                        message: errMsg,
                     },
                     `❌  ${errMsg}`
                 );
 
                 console.log(`✅  Assert = Error: ${errMsg}`);
 
-                engine = pixelChange({width: width, height: height, depth: depth});
+                engine = pixelChange({ width: width, height: height, depth: depth });
 
                 assert(typeof engine.compare === 'function' && engine.compare.name === 'compare', `❌  typeof engine.compare === 'function' && engine.compare.name === 'compare'`);
 
@@ -256,8 +256,6 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                 // gray
 
                 pixelsArray = [];
-
-                resultArray = [];
 
                 expectedArray = [0.11, 1.85, 4.66, 6.51, 7.91, 7.28, 7.87, 6.47, 6.21, 6.61, 7.89, 7.24, 7.9];
 
@@ -275,9 +273,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 size = width * height * depth;
 
-                engine = pixelChange({width, height, depth, draw, response});
+                engine = pixelChange({ width, height, depth, draw, response });
 
                 compare = promisify(engine.compare.bind(engine));
+
+                resultArray = [];
+
+                console.time(`✅  gray (sync)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = engine.compareSync(pixelsArray[i], pixelsArray[j]);
@@ -291,11 +293,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
+                console.timeEnd(`✅  gray (sync)`);
+
                 deepStrictEqual(resultArray, expectedArray, `❌  gray (sync)`);
 
-                console.log(`✅  gray (sync)`);
-
                 resultArray = [];
+
+                console.time(`✅  gray (promise)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = await engine.compare(pixelsArray[i], pixelsArray[j]);
@@ -309,11 +313,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
+                console.timeEnd(`✅  gray (promise)`);
+
                 deepStrictEqual(resultArray, expectedArray, `❌  gray (promise)`);
 
-                console.log(`✅  gray (promise)`);
-
                 resultArray = [];
+
+                console.time(`✅  gray (promisified)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = await compare(pixelsArray[i], pixelsArray[j]);
@@ -327,17 +333,15 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
-                deepStrictEqual(resultArray, expectedArray, `❌  gray (promisified)`);
+                console.timeEnd(`✅  gray (promisified)`);
 
-                console.log(`✅  gray (promisified)`);
+                deepStrictEqual(resultArray, expectedArray, `❌  gray (promisified)`);
 
                 /* --------------------------------------------------------------------------------------------------------------------*/
 
                 // rgb
 
                 pixelsArray = [];
-
-                resultArray = [];
 
                 expectedArray = [0.13, 1.96, 4.96, 6.98, 8.52, 7.84, 8.49, 6.89, 4.88, 7.04, 8.52, 7.8, 8.5];
 
@@ -355,9 +359,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 size = width * height * depth;
 
-                engine = pixelChange({width, height, depth, draw, response});
+                engine = pixelChange({ width, height, depth, draw, response });
 
                 compare = promisify(engine.compare.bind(engine));
+
+                resultArray = [];
+
+                console.time(`✅  rgb  (sync)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = engine.compareSync(pixelsArray[i], pixelsArray[j]);
@@ -371,11 +379,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
+                console.timeEnd(`✅  rgb  (sync)`);
+
                 deepStrictEqual(resultArray, expectedArray, `❌  rgb (sync)`);
 
-                console.log(`✅  rgb  (sync)`);
-
                 resultArray = [];
+
+                console.time(`✅  rgb  (promise)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = await engine.compare(pixelsArray[i], pixelsArray[j]);
@@ -389,11 +399,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
+                console.timeEnd(`✅  rgb  (promise)`);
+
                 deepStrictEqual(resultArray, expectedArray, `❌  rgb (promise)`);
 
-                console.log(`✅  rgb  (promise)`);
-
                 resultArray = [];
+
+                console.time(`✅  rgb  (promisified)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = await compare(pixelsArray[i], pixelsArray[j]);
@@ -407,17 +419,15 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
-                deepStrictEqual(resultArray, expectedArray, `❌  rgb (promisified)`);
+                console.timeEnd(`✅  rgb  (promisified)`);
 
-                console.log(`✅  rgb  (promisified)`);
+                deepStrictEqual(resultArray, expectedArray, `❌  rgb (promisified)`);
 
                 /* --------------------------------------------------------------------------------------------------------------------*/
 
                 // rgba
 
                 pixelsArray = [];
-
-                resultArray = [];
 
                 expectedArray = [0.12, 1.88, 4.8, 6.73, 8.19, 7.54, 8.17, 6.66, 4.71, 6.8, 8.2, 7.5, 8.19];
 
@@ -435,9 +445,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
                 size = width * height * depth;
 
-                engine = pixelChange({width, height, depth, draw, response});
+                engine = pixelChange({ width, height, depth, draw, response });
 
                 compare = promisify(engine.compare.bind(engine));
+
+                resultArray = [];
+
+                console.time(`✅  rgba (sync)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = engine.compareSync(pixelsArray[i], pixelsArray[j]);
@@ -451,11 +465,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
+                console.timeEnd(`✅  rgba (sync)`);
+
                 deepStrictEqual(resultArray, expectedArray, `❌  rgba (sync)`);
 
-                console.log(`✅  rgba (sync)`);
-
                 resultArray = [];
+
+                console.time(`✅  rgba (promise)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = await engine.compare(pixelsArray[i], pixelsArray[j]);
@@ -469,11 +485,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
+                console.timeEnd(`✅  rgba (promise)`);
+
                 deepStrictEqual(resultArray, expectedArray, `❌  rgba (promise)`);
 
-                console.log(`✅  rgba (promise)`);
-
                 resultArray = [];
+
+                console.time(`✅  rgba (promisified)`);
 
                 for (let i = 0, j = 1; j <= 13; ++i, ++j) {
                     const results = await compare(pixelsArray[i], pixelsArray[j]);
@@ -487,9 +505,9 @@ const responseArr = ['percent', 'bounds', 'blobs'];
                     }
                 }
 
-                deepStrictEqual(resultArray, expectedArray, `❌  rgba (promisified)`);
+                console.timeEnd(`✅  rgba (promisified)`);
 
-                console.log(`✅  rgba (promisified)`);
+                deepStrictEqual(resultArray, expectedArray, `❌  rgba (promisified)`);
 
                 /* --------------------------------------------------------------------------------------------------------------------*/
 
