@@ -337,6 +337,42 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         deepStrictEqual(resultArray, expectedArray, `❌  gray (promisified)`);
 
+        errMsg = `Both buffers must have a length of ${size}`;
+
+        try {
+          console.log('sync -', engine.compareSync(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
+        } catch (err) {
+          assert(err.message === errMsg);
+          console.log("✅  sync catch(err) -", errMsg);
+        }
+
+        engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1), (err, msg) => {
+          if (err) {
+            assert(err.message === errMsg);
+            return console.log("✅  callback(err) -", errMsg);
+          }
+          console.log('callback -', msg);
+        });
+
+        try {
+          console.log('await -', await engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
+        } catch (err) {
+          assert(err.message === errMsg);
+          console.log("✅  async await catch(err) -", errMsg);
+        }
+
+        engine
+          .compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1))
+          .then(msg => {
+            console.log('promise then(msg) -', msg);
+          })
+          .catch(err => {
+            assert(err.message === errMsg);
+            console.log("✅  promise then catch(err) -", errMsg);
+          });
+
+        await sleep(100);
+
         /* --------------------------------------------------------------------------------------------------------------------*/
 
         // rgb
@@ -422,6 +458,42 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.timeEnd(`✅  rgb  (promisified)`);
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgb (promisified)`);
+
+        errMsg = `Both buffers must have a length of ${size}`;
+
+        try {
+          console.log('sync -', engine.compareSync(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
+        } catch (err) {
+          assert(err.message === errMsg);
+          console.log("✅  sync catch(err) -", errMsg);
+        }
+
+        engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1), (err, msg) => {
+          if (err) {
+            assert(err.message === errMsg);
+            return console.log("✅  callback(err) -", errMsg);
+          }
+          console.log('callback -', msg);
+        });
+
+        try {
+          console.log('await -', await engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
+        } catch (err) {
+          assert(err.message === errMsg);
+          console.log("✅  async await catch(err) -", errMsg);
+        }
+
+        engine
+          .compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1))
+          .then(msg => {
+            console.log('promise then(msg) -', msg);
+          })
+          .catch(err => {
+            assert(err.message === errMsg);
+            console.log("✅  promise then catch(err) -", errMsg);
+          });
+
+        await sleep(100);
 
         /* --------------------------------------------------------------------------------------------------------------------*/
 
@@ -509,33 +581,19 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgba (promisified)`);
 
-        /* --------------------------------------------------------------------------------------------------------------------*/
-
-        console.log(`🎉🎉🎉 draw: ${draw}, response: ${response} 🎉🎉🎉\n`);
-
-        /* --------------------------------------------------------------------------------------------------------------------*/
-
-        width = 3;
-
-        height = 3;
-
-        depth = 3;
-
-        size = width * height * depth;
-
-        engine = pixelChange({width: 3, height: 3, depth: 3, draw, response});
+        errMsg = `Both buffers must have a length of ${size}`;
 
         try {
           console.log('sync -', engine.compareSync(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
-          // console.error("sync -", err.message);
-          assert(err.message === `Both buffers must have a length of ${size}`);
+          assert(err.message === errMsg);
+          console.log("✅  sync catch(err) -", errMsg);
         }
 
         engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1), (err, msg) => {
           if (err) {
-            // return console.error("callback -", err);
-            return assert(err === `Both buffers must have a length of ${size}`);
+            assert(err.message === errMsg);
+            return console.log("✅  callback(err) -", errMsg);
           }
           console.log('callback -', msg);
         });
@@ -543,19 +601,27 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         try {
           console.log('await -', await engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
-          // console.error("await -", err);
-          assert(err === `Both buffers must have a length of ${size}`);
+          assert(err.message === errMsg);
+          console.log("✅  async await catch(err) -", errMsg);
         }
 
         engine
           .compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1))
           .then(msg => {
-            console.log('then -', msg);
+            console.log('promise then(msg) -', msg);
           })
           .catch(err => {
-            // console.error("catch -", err);
-            assert(err === `Both buffers must have a length of ${size}`);
+            assert(err.message === errMsg);
+            console.log("✅  promise then catch(err) -", errMsg);
           });
+
+        await sleep(100);
+
+        /* --------------------------------------------------------------------------------------------------------------------*/
+
+        console.log(`🎉🎉🎉 draw: ${draw}, response: ${response} 🎉🎉🎉\n`);
+
+        /* --------------------------------------------------------------------------------------------------------------------*/
 
         await sleep(1000);
       }
