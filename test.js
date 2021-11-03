@@ -19,6 +19,8 @@ const drawArr = [false, true];
 const responseArr = ['percent', 'bounds', 'blobs'];
 
 (async () => {
+  console.log(`\n--- ${pixelChange.path} ---`);
+
   try {
     for (let draw of drawArr) {
       for (let response of responseArr) {
@@ -343,13 +345,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           console.log('sync -', engine.compareSync(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
           assert(err.message === errMsg);
-          console.log("✅  sync catch(err) -", errMsg);
+          console.log('✅  sync catch(err) -', errMsg);
         }
 
         engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1), (err, msg) => {
           if (err) {
             assert(err.message === errMsg);
-            return console.log("✅  callback(err) -", errMsg);
+            return console.log('✅  callback(err) -', errMsg);
           }
           console.log('callback -', msg);
         });
@@ -358,7 +360,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           console.log('await -', await engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
           assert(err.message === errMsg);
-          console.log("✅  async await catch(err) -", errMsg);
+          console.log('✅  async await catch(err) -', errMsg);
         }
 
         engine
@@ -368,7 +370,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           })
           .catch(err => {
             assert(err.message === errMsg);
-            console.log("✅  promise then catch(err) -", errMsg);
+            console.log('✅  promise then catch(err) -', errMsg);
           });
 
         await sleep(100);
@@ -465,13 +467,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           console.log('sync -', engine.compareSync(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
           assert(err.message === errMsg);
-          console.log("✅  sync catch(err) -", errMsg);
+          console.log('✅  sync catch(err) -', errMsg);
         }
 
         engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1), (err, msg) => {
           if (err) {
             assert(err.message === errMsg);
-            return console.log("✅  callback(err) -", errMsg);
+            return console.log('✅  callback(err) -', errMsg);
           }
           console.log('callback -', msg);
         });
@@ -480,7 +482,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           console.log('await -', await engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
           assert(err.message === errMsg);
-          console.log("✅  async await catch(err) -", errMsg);
+          console.log('✅  async await catch(err) -', errMsg);
         }
 
         engine
@@ -490,7 +492,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           })
           .catch(err => {
             assert(err.message === errMsg);
-            console.log("✅  promise then catch(err) -", errMsg);
+            console.log('✅  promise then catch(err) -', errMsg);
           });
 
         await sleep(100);
@@ -587,13 +589,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           console.log('sync -', engine.compareSync(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
           assert(err.message === errMsg);
-          console.log("✅  sync catch(err) -", errMsg);
+          console.log('✅  sync catch(err) -', errMsg);
         }
 
         engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1), (err, msg) => {
           if (err) {
             assert(err.message === errMsg);
-            return console.log("✅  callback(err) -", errMsg);
+            return console.log('✅  callback(err) -', errMsg);
           }
           console.log('callback -', msg);
         });
@@ -602,7 +604,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           console.log('await -', await engine.compare(Buffer.alloc(size, 0), Buffer.alloc(size + 1, 1)));
         } catch (err) {
           assert(err.message === errMsg);
-          console.log("✅  async await catch(err) -", errMsg);
+          console.log('✅  async await catch(err) -', errMsg);
         }
 
         engine
@@ -612,7 +614,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           })
           .catch(err => {
             assert(err.message === errMsg);
-            console.log("✅  promise then catch(err) -", errMsg);
+            console.log('✅  promise then catch(err) -', errMsg);
           });
 
         await sleep(100);
