@@ -19,7 +19,7 @@ const drawArr = [false, true];
 const responseArr = ['percent', 'bounds', 'blobs'];
 
 (async () => {
-  console.log(`\n--- ${pixelChange.path} ---`);
+  // console.log(`\n--- ${pixelChange.path} ---`);
 
   try {
     for (let draw of drawArr) {
