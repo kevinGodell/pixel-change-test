@@ -284,13 +284,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  gray (sync)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = engine.compareSync(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = engine.compareSync(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -304,13 +304,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  gray (promise)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = await engine.compare(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = await engine.compare(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -324,13 +324,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  gray (promisified)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = await compare(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = await compare(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -406,13 +406,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  rgb  (sync)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = engine.compareSync(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = engine.compareSync(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -426,13 +426,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  rgb  (promise)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = await engine.compare(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = await engine.compare(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -446,13 +446,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  rgb  (promisified)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = await compare(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = await compare(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -528,13 +528,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  rgba (sync)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = engine.compareSync(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = engine.compareSync(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -548,13 +548,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  rgba (promise)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = await engine.compare(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = await engine.compare(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
@@ -568,13 +568,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.time(`✅  rgba (promisified)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
-          const results = await compare(pixelsArray[i], pixelsArray[j]);
+          const {results, pixels} = await compare(pixelsArray[i], pixelsArray[j]);
 
           if (results.length) {
             resultArray.push(Math.trunc(results[0].percent * 100) / 100);
 
-            if (results.pixels) {
-              assert(results.pixels.length === size);
+            if (pixels) {
+              assert(pixels.length === size);
             }
           }
         }
