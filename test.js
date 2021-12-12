@@ -46,6 +46,10 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         let expectedArray;
 
+        let promises;
+
+        let allResults;
+
         /* --------------------------------------------------------------------------------------------------------------------*/
 
         // basic test for factory constructor
@@ -339,6 +343,33 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         deepStrictEqual(resultArray, expectedArray, `❌  gray (promisified)`);
 
+        resultArray = [];
+
+        promises = [];
+
+        console.time(`✅  gray (promise all)`);
+
+        for (let i = 0, j = 1; j <= 13; ++i, ++j) {
+          promises.push(engine.compare(pixelsArray[i], pixelsArray[j]));
+        }
+
+        allResults = await Promise.all(promises);
+
+        for (let i = 0; i < allResults.length; ++i) {
+          const {results, pixels} = allResults[i];
+          if (results.length) {
+            resultArray.push(Math.trunc(results[0].percent * 100) / 100);
+
+            if (pixels) {
+              assert(pixels.length === size);
+            }
+          }
+        }
+
+        console.timeEnd(`✅  gray (promise all)`);
+
+        deepStrictEqual(resultArray, expectedArray, `❌  gray (promise all)`);
+
         errMsg = `Both buffers must have a length of ${size}`;
 
         try {
@@ -461,6 +492,33 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgb (promisified)`);
 
+        resultArray = [];
+
+        promises = [];
+
+        console.time(`✅  rgb (promise all)`);
+
+        for (let i = 0, j = 1; j <= 13; ++i, ++j) {
+          promises.push(engine.compare(pixelsArray[i], pixelsArray[j]));
+        }
+
+        allResults = await Promise.all(promises);
+
+        for (let i = 0; i < allResults.length; ++i) {
+          const {results, pixels} = allResults[i];
+          if (results.length) {
+            resultArray.push(Math.trunc(results[0].percent * 100) / 100);
+
+            if (pixels) {
+              assert(pixels.length === size);
+            }
+          }
+        }
+
+        console.timeEnd(`✅  rgb (promise all)`);
+
+        deepStrictEqual(resultArray, expectedArray, `❌  rgb (promise all)`);
+
         errMsg = `Both buffers must have a length of ${size}`;
 
         try {
@@ -582,6 +640,33 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         console.timeEnd(`✅  rgba (promisified)`);
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgba (promisified)`);
+
+        resultArray = [];
+
+        promises = [];
+
+        console.time(`✅  rgba (promise all)`);
+
+        for (let i = 0, j = 1; j <= 13; ++i, ++j) {
+          promises.push(engine.compare(pixelsArray[i], pixelsArray[j]));
+        }
+
+        allResults = await Promise.all(promises);
+
+        for (let i = 0; i < allResults.length; ++i) {
+          const {results, pixels} = allResults[i];
+          if (results.length) {
+            resultArray.push(Math.trunc(results[0].percent * 100) / 100);
+
+            if (pixels) {
+              assert(pixels.length === size);
+            }
+          }
+        }
+
+        console.timeEnd(`✅  rgba (promise all)`);
+
+        deepStrictEqual(resultArray, expectedArray, `❌  rgba (promise all)`);
 
         errMsg = `Both buffers must have a length of ${size}`;
 
