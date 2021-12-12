@@ -434,7 +434,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         resultArray = [];
 
-        console.time(`✅  rgb  (sync)`);
+        console.time(`✅  rgb (sync)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
           const {results, pixels} = engine.compareSync(pixelsArray[i], pixelsArray[j]);
@@ -448,13 +448,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           }
         }
 
-        console.timeEnd(`✅  rgb  (sync)`);
+        console.timeEnd(`✅  rgb (sync)`);
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgb (sync)`);
 
         resultArray = [];
 
-        console.time(`✅  rgb  (promise)`);
+        console.time(`✅  rgb (promise)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
           const {results, pixels} = await engine.compare(pixelsArray[i], pixelsArray[j]);
@@ -468,13 +468,13 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           }
         }
 
-        console.timeEnd(`✅  rgb  (promise)`);
+        console.timeEnd(`✅  rgb (promise)`);
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgb (promise)`);
 
         resultArray = [];
 
-        console.time(`✅  rgb  (promisified)`);
+        console.time(`✅  rgb (promisified)`);
 
         for (let i = 0, j = 1; j <= 13; ++i, ++j) {
           const {results, pixels} = await compare(pixelsArray[i], pixelsArray[j]);
@@ -488,7 +488,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
           }
         }
 
-        console.timeEnd(`✅  rgb  (promisified)`);
+        console.timeEnd(`✅  rgb (promisified)`);
 
         deepStrictEqual(resultArray, expectedArray, `❌  rgb (promisified)`);
 
