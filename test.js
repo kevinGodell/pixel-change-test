@@ -10,7 +10,7 @@ const assert = require('assert');
 
 const {deepStrictEqual, throws} = assert;
 
-const {promisify} = require('util');
+const {inspect, promisify} = require('util');
 
 const sleep = promisify(setTimeout);
 
@@ -281,6 +281,8 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         engine = pixelChange({width, height, depth, draw, response});
 
+        console.log(inspect(engine, { showHidden: true, colors: true, depth: null, compact: false, getters: true }));
+
         compare = promisify(engine.compare.bind(engine));
 
         resultArray = [];
@@ -429,6 +431,8 @@ const responseArr = ['percent', 'bounds', 'blobs'];
         size = width * height * depth;
 
         engine = pixelChange({width, height, depth, draw, response});
+
+        console.log(inspect(engine, { showHidden: true, colors: true, depth: null, compact: false, getters: true }));
 
         compare = promisify(engine.compare.bind(engine));
 
@@ -579,6 +583,8 @@ const responseArr = ['percent', 'bounds', 'blobs'];
 
         engine = pixelChange({width, height, depth, draw, response});
 
+        console.log(inspect(engine, { showHidden: true, colors: true, depth: null, compact: false, getters: true }));
+
         compare = promisify(engine.compare.bind(engine));
 
         resultArray = [];
@@ -716,4 +722,7 @@ const responseArr = ['percent', 'bounds', 'blobs'];
   } catch (err) {
     console.error(err);
   }
+
+  console.log(inspect(pixelChange, { showHidden: false, colors: true, depth: null, compact: false }));
+
 })();
